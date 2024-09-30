@@ -1,0 +1,166 @@
+/* Overlay to detect outside clicks */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+  z-index: 900; /* Ensures overlay appears above content */
+  cursor: pointer;
+}
+
+/* Sideways Drawer Style */
+.sideways-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30%;
+  max-width: 400px; /* Max width for better experience on larger screens */
+  background-color: #ffffff; /* Pure white for readability */
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out; /* Smoother, faster transition */
+  z-index: 1000; /* Ensure drawer appears on top */
+  transform: translateX(100%); /* Initially hidden */
+}
+
+.sideways-drawer.open {
+  transform: translateX(0%); /* Slide in */
+}
+
+/* Form Container Styling */
+.metadata-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.metadata-form h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333; /* Slightly darker text for contrast */
+}
+
+/* Form Group Styling */
+.form-group {
+  width: 100%;
+  margin-bottom: 20px; /* Increased margin for better spacing */
+  position: relative; /* To ensure suggestions are positioned correctly */
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px; /* Slightly increased padding for better input interaction */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Softer rounded corners */
+  font-size: 14px;
+  background-color: #f9f9f9; /* Subtle background for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b82f6; /* Highlight input on focus */
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Subtle shadow */
+}
+
+/* Button Styling */
+.capture-btn, .submit-btn, .cancel-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 12px 16px; /* Increased padding for better touch targets */
+  border: none;
+  border-radius: 8px; /* Rounded corners for buttons */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and active transitions */
+}
+
+.capture-btn:hover, .submit-btn:hover, .cancel-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.submit-btn:active, .cancel-btn:active {
+  transform: translateY(0); /* Reset lift effect on click */
+}
+
+.cancel-btn {
+  background-color: #f87171;
+}
+
+.cancel-btn:hover {
+  background-color: #ef4444;
+}
+
+/* Address Suggestions Styling */
+.address-suggestions {
+  border: 1px solid #ddd;
+  background-color: white;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  top: 100%; /* Position it right below the input field */
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners for suggestions list */
+}
+
+.address-suggestions li {
+  padding: 12px; /* Larger padding for better usability */
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover effect */
+}
+
+.address-suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.submit-btn, .cancel-btn {
+  width: 48%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .sideways-drawer {
+    width: 80%; /* Larger width for better experience on smaller screens */
+    max-width: none;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .submit-btn, .cancel-btn {
+    width: 100%;
+    margin-bottom: 10px; /* Add some spacing between buttons */
+  }
+
+  .form-input {
+    font-size: 16px; /* Larger input text for mobile */
+  }
+
+  .address-suggestions {
+    max-height: 150px; /* Reduce height of suggestions list on mobile */
+  }
+}
